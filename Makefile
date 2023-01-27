@@ -1,4 +1,4 @@
-all: test1.bin test2.bin stderr.bin feed_string.bin feed_file.bin json.bin
+all: test1.bin test2.bin stderr.bin feed_string.bin feed_file.bin json.bin sudo.bin
 
 .cpp.o:
 	g++ -std=c++23 -c -Wall -o $@ $<

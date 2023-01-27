@@ -180,6 +180,17 @@ std::expected<int, int> exec(const std::string& cmd, const std::vector<std::stri
     }, options);
 }
 
+std::expected<int, int> sudo(const std::string& cmd, const std::vector<std::string>& args/* = {}*/, const Options& options/* = {}*/)
+{
+    if (geteuid() == 0) return exec(cmd, args, options);
+    //else
+    std::vector<std::string> sudo_args = {cmd};
+    for (const auto& arg:args) {
+        sudo_args.push_back(arg);
+    }
+    return exec("sudo", sudo_args, options);
+}
+
 void ENSURE_OK(std::expected<int, int> result)
 {
     if (result) {

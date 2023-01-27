@@ -24,6 +24,7 @@ namespace piped_subprocess {
 
     std::expected<int, int> fork(std::function<int(void)> subprocess, const Options& options = {});
     std::expected<int, int> exec(const std::string& cmd, const std::vector<std::string>& args = {}, const Options& options = {});
+    std::expected<int, int> sudo(const std::string& cmd, const std::vector<std::string>& args = {}, const Options& options = {});
     void ENSURE_OK(std::expected<int, int> result);
 }
 
